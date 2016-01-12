@@ -53,17 +53,7 @@
 
                 <div class="collapse navbar-collapse" id="header-nav">
                     {% block header_menu %}
-                        <ul id="header-menu" class="nav navbar-nav">
-                            {% block navigation_items %}
-                                {% for item in easyadmin_config('entities') %}
-                                    <li class="{{ item.name|lower == app.request.get('entity')|lower ? 'active' : '' }}">
-                                        <a href="{{ path('easyadmin', { entity: item.name, action: 'list' }) }}">
-                                            {{- item.label|trans -}}
-                                        </a>
-                                    </li>
-                                {% endfor %}
-                            {% endblock %}
-                        </ul>
+                        {{ include(_entity_config.templates.menu) }}
                     {% endblock header_menu %}
                 </div>
 
